@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>يا قلبي يا أغلى الناس</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+      min-height:100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cairo', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+    .heart {
+      position: fixed;
+      font-size: 1rem;
+      color: #e91e63;
+      animation: circle 8s infinite;
+      opacity: 0.7;
+    }
+    @keyframes circle {
+      0% { transform: translate(0, 0) scale(0.7); opacity: 0.7; }
+      50% { transform: translate(15px, -15px) scale(1.1); opacity: 1; }
+      100% { transform: translate(0, 0) scale(0.7); opacity: 0.7; }
+    }
+    .play-pause-btn {
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .play-pause-btn:hover {
+      transform: scale(1.2);
+      color: #ff4081;
+    }
+    .gift-box {
+      cursor: pointer;
+      background: #f06292;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      margin: 1rem auto;
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .gift-box:hover { transform: scale(1.05); }
+    .gift-message {
+      display: none;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 0.75rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      color: #e91e63;
+      font-size: 0.9rem;
+    }
+    .romantic-messages {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .romantic-message {
+      background: #fce4ec;
+      color: #d81b60;
+      padding: 0.5rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+    }
+    .color-btn {
+      background: #f06292;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 0.8rem;
+      margin: 0.3rem;
+    }
+    .color-btn:hover { background: #e91e63; }
+    @media (max-width: 360px) {
+      .container { padding: 1rem; width: 95%; }
+      h1 { font-size: 1.5rem; }
+      p { font-size: 0.9rem; }
+      .play-pause-btn { font-size: 2rem; }
+      .gift-box { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+      .gift-message { font-size: 0.8rem; }
+      .romantic-message { font-size: 0.8rem; }
+      .color-btn { font-size: 0.7rem; padding: 0.4rem 0.8rem; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-4xl font-bold text-pink-900 mb-6">بحبك يابتتتتتتتتت💕</h1>
+    <p class="text-base text-pink-800 mb-3"> إنتِ النور اللي مالي حياتي كلها، ضحكتك عندي بالدنيا وما فيها 😍💖 </p>
+    <p class="text-base text-pink-800 mb-3"> لو الدنيا عليكي أو زعلتك، أنا حضنك اللي هتهربي له، أنا هنا عشان أمسح دمعتك وأضحكك من قلبك 💕🥺 </p>
+    <p class="text-base text-pink-800 mb-3"> إنتِ مش بس حبيبتي… إنتِ قمري، إنتِ روحي، إنتِ كل لحظة حلوة في حياتي 🌙💗 </p>
+    <p class="text-base text-pink-800 mb-4"> 💌 "من غيرك يا حبيبتي، الدنيا ماليهاش لون… إنتِ الفرحة اللي في قلبي، وإنتِ الحلم اللي عايش فيه طول العمر" 💌 </p>
+    
+    <div class="flex justify-center mb-4">
+      <span id="playPauseBtn" class="play-pause-btn">💞</span>
+    </div>
+
+    <div class="gift-box" onclick="openGift()">🎁 افتحي الهدية يا قلبي</div>
+    <div id="giftMessage" class="gift-message">
+      إنتِ أحلى هدية ربنا بعتهالي، يا رب أشوفك دايمًا مبسوطة ومرتاحة 💕
+    </div>
+
+    <div class="romantic-messages">
+      <div class="romantic-message">كل ما أشوفك بضحك من قلبي، إنتِ السعادة بجد 😊</div>
+      <div class="romantic-message">لو الدنيا كلها زعلتك، أنا هخلّيكِ تنسيها ببوسة مني 😘</div>
+      <div class="romantic-message">إنتِ زي الأغنية الحلوة، بتخليني أعيش في حلم كل يوم 🌹</div>
+    </div>
+
+    <div class="mt-3 flex justify-center flex-wrap gap-2">
+      <button class="color-btn" onclick="changeColors('#ff9a9e', '#fecfef')">بحبك</button>
+      <button class="color-btn" onclick="changeColors('#f48fb1', '#f8bbd0')"> دا بمووووت فيكى</button>
+      <button class="color-btn" onclick="changeColors('#ce93d8', '#f3e5f5')"> دا انتى مزززززه</button>
+    </div>
+  </div>
+
+  <!-- اغنية وائل جسار -->
+  <iframe id="songFrame" width="0" height="0" 
+    src="https://www.youtube.com/embed/zXk1NpDPKTc?enablejsapi=1&loop=1&playlist=zXk1NpDPKTc" 
+    frameborder="0" allow="autoplay"></iframe>
+
+  <script>
+    const hearts = 15;
+    for (let i = 0; i < hearts; i++) {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 8 + 's';
+      heart.style.animationDuration = Math.random() * 4 + 5 + 's';
+      document.body.appendChild(heart);
+    }
+
+    // التحكم في يوتيوب عبر API
+    let player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('songFrame');
+    }
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    let isPlaying = false;
+
+    playPauseBtn.addEventListener('click', () => {
+      if (player) {
+        if (isPlaying) {
+          player.pauseVideo();
+          playPauseBtn.innerHTML = '💞';
+        } else {
+          player.playVideo();
+          playPauseBtn.innerHTML = '💓';
+        }
+        isPlaying = !isPlaying;
+      }
+    });
+
+    function openGift() {
+      const giftMessage = document.getElementById('giftMessage');
+      giftMessage.style.display = giftMessage.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function changeColors(startColor, endColor) {
+      document.body.style.background = `linear-gradient(to bottom, ${startColor}, ${endColor})`;
+    }
+  </script>
+
+  <!-- مكتبة يوتيوب -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
